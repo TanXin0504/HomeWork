@@ -27,6 +27,7 @@ public class GoodsAction {
 	@GetMapping("{p}/{s}")
 	public PageInfo<Goods> queryAll(@PathVariable Integer p,@PathVariable Integer s){
 		System.out.println(1);
+		System.out.println(2);
 		return goodsBiz.queryAll(p, s);
 	}
 	
