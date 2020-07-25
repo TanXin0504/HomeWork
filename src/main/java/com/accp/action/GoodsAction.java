@@ -28,7 +28,7 @@ public class GoodsAction {
 	public PageInfo<Goods> queryAll(@PathVariable Integer p,@PathVariable Integer s){
 		System.out.println(1);
 		System.out.println(2);
-		System.out.println(3);
+		System.out.println(4);
 		return goodsBiz.queryAll(p, s);
 	}
 	
