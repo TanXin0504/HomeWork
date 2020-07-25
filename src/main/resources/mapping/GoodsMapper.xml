@@ -1,0 +1,150 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.accp.dao.GoodsMapper" >
+  <resultMap id="BaseResultMap" type="com.accp.pojo.Goods" >
+    <id column="goodsid" property="goodsid" jdbcType="VARCHAR" />
+    <result column="goodsname" property="goodsname" jdbcType="VARCHAR" />
+    <result column="zgys" property="zgys" jdbcType="VARCHAR" />
+    <result column="type" property="type" jdbcType="VARCHAR" />
+    <result column="num" property="num" jdbcType="INTEGER" />
+    <result column="price" property="price" jdbcType="DOUBLE" />
+    <result column="sumPrice" property="sumprice" jdbcType="DOUBLE" />
+    <result column="bzjj" property="bzjj" jdbcType="DOUBLE" />
+    <result column="salePrice" property="saleprice" jdbcType="DOUBLE" />
+    <result column="lrTime" property="lrtime" jdbcType="DATE" />
+  </resultMap>
+  <sql id="Base_Column_List" >
+    goodsid, goodsname, zgys, type, num, price, sumPrice, bzjj, salePrice, lrTime
+  </sql>
+  <select id="selectByPrimaryKey" resultMap="BaseResultMap" parameterType="java.lang.String" >
+    select 
+    <include refid="Base_Column_List" />
+    from goods
+    where goodsid = #{goodsid,jdbcType=VARCHAR}
+  </select>
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.String" >
+    delete from goods
+    where goodsid = #{goodsid,jdbcType=VARCHAR}
+  </delete>
+  <insert id="insert" parameterType="com.accp.pojo.Goods" >
+    insert into goods (goodsid, goodsname, zgys, 
+      type, num, price, sumPrice, 
+      bzjj, salePrice, lrTime)
+    values (#{goodsid,jdbcType=VARCHAR}, #{goodsname,jdbcType=VARCHAR}, #{zgys,jdbcType=VARCHAR}, 
+      #{type,jdbcType=VARCHAR}, #{num,jdbcType=INTEGER}, #{price,jdbcType=DOUBLE}, #{sumprice,jdbcType=DOUBLE}, 
+      #{bzjj,jdbcType=DOUBLE}, #{saleprice,jdbcType=DOUBLE}, #{lrtime,jdbcType=DATE})
+  </insert>
+  <insert id="insertSelective" parameterType="com.accp.pojo.Goods" >
+    insert into goods
+    <trim prefix="(" suffix=")" suffixOverrides="," >
+      <if test="goodsid != null" >
+        goodsid,
+      </if>
+      <if test="goodsname != null" >
+        goodsname,
+      </if>
+      <if test="zgys != null" >
+        zgys,
+      </if>
+      <if test="type != null" >
+        type,
+      </if>
+      <if test="num != null" >
+        num,
+      </if>
+      <if test="price != null" >
+        price,
+      </if>
+      <if test="sumprice != null" >
+        sumPrice,
+      </if>
+      <if test="bzjj != null" >
+        bzjj,
+      </if>
+      <if test="saleprice != null" >
+        salePrice,
+      </if>
+      <if test="lrtime != null" >
+        lrTime,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides="," >
+      <if test="goodsid != null" >
+        #{goodsid,jdbcType=VARCHAR},
+      </if>
+      <if test="goodsname != null" >
+        #{goodsname,jdbcType=VARCHAR},
+      </if>
+      <if test="zgys != null" >
+        #{zgys,jdbcType=VARCHAR},
+      </if>
+      <if test="type != null" >
+        #{type,jdbcType=VARCHAR},
+      </if>
+      <if test="num != null" >
+        #{num,jdbcType=INTEGER},
+      </if>
+      <if test="price != null" >
+        #{price,jdbcType=DOUBLE},
+      </if>
+      <if test="sumprice != null" >
+        #{sumprice,jdbcType=DOUBLE},
+      </if>
+      <if test="bzjj != null" >
+        #{bzjj,jdbcType=DOUBLE},
+      </if>
+      <if test="saleprice != null" >
+        #{saleprice,jdbcType=DOUBLE},
+      </if>
+      <if test="lrtime != null" >
+        #{lrtime,jdbcType=DATE},
+      </if>
+    </trim>
+  </insert>
+  <update id="updateByPrimaryKeySelective" parameterType="com.accp.pojo.Goods" >
+    update goods
+    <set >
+      <if test="goodsname != null" >
+        goodsname = #{goodsname,jdbcType=VARCHAR},
+      </if>
+      <if test="zgys != null" >
+        zgys = #{zgys,jdbcType=VARCHAR},
+      </if>
+      <if test="type != null" >
+        type = #{type,jdbcType=VARCHAR},
+      </if>
+      <if test="num != null" >
+        num = #{num,jdbcType=INTEGER},
+      </if>
+      <if test="price != null" >
+        price = #{price,jdbcType=DOUBLE},
+      </if>
+      <if test="sumprice != null" >
+        sumPrice = #{sumprice,jdbcType=DOUBLE},
+      </if>
+      <if test="bzjj != null" >
+        bzjj = #{bzjj,jdbcType=DOUBLE},
+      </if>
+      <if test="saleprice != null" >
+        salePrice = #{saleprice,jdbcType=DOUBLE},
+      </if>
+      <if test="lrtime != null" >
+        lrTime = #{lrtime,jdbcType=DATE},
+      </if>
+    </set>
+    where goodsid = #{goodsid,jdbcType=VARCHAR}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="com.accp.pojo.Goods" >
+    update goods
+    set goodsname = #{goodsname,jdbcType=VARCHAR},
+      zgys = #{zgys,jdbcType=VARCHAR},
+      type = #{type,jdbcType=VARCHAR},
+      num = #{num,jdbcType=INTEGER},
+      price = #{price,jdbcType=DOUBLE},
+      sumPrice = #{sumprice,jdbcType=DOUBLE},
+      bzjj = #{bzjj,jdbcType=DOUBLE},
+      salePrice = #{saleprice,jdbcType=DOUBLE},
+      lrTime = #{lrtime,jdbcType=DATE}
+    where goodsid = #{goodsid,jdbcType=VARCHAR}
+  </update>
+</mapper>
